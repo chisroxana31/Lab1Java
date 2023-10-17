@@ -51,5 +51,47 @@ public class Problem3 {
 
         return result;
     }
+    public static int[] multipliziertDigit(int[] largeNumber, int digit) {
+        int n = largeNumber.length;
+        int[] result = new int[n];
+        int carry = 0;
+
+        for (int i = n - 1; i >= 0; i--) {
+            int product = (largeNumber[i] * digit) + carry;
+            result[i] = product % 10;
+            carry = product / 10;
+        }
+
+        // Wenn nach der Multiplikation immer noch ein Übertrag vorhanden ist, erweitern Sie das Ergebnis.
+        if (carry > 0) {
+            int[] newResult = new int[n + 1];
+            newResult[0] = carry;
+            System.arraycopy(result, 0, newResult, 1, n);
+            result = newResult;
+        }
+
+        return result;
+    }
+
+    public static int[] divisionDigit(int[] largeNumber, int divisor) {
+        int n = largeNumber.length;
+        int[] result = new int[n];
+        int remainder = 0;
+
+        for (int i = 0; i < n; i++) {
+            int currentDigit = largeNumber[i] + remainder * 10;
+            result[i] = currentDigit / divisor;
+            remainder = currentDigit % divisor;
+        }
+
+        return result;
+    }
+
+
+
+
+
+
+
 
 }
