@@ -87,11 +87,4 @@ public class Problem3 {
         return result;
     }
 
-
-
-
-
-
-
-
 }
