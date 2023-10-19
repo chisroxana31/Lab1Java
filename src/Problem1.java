@@ -4,16 +4,20 @@ public class Problem1 {
     Rückgabewert soll die Methode ein Array mit nicht ausreichende Note liefern.
      */
     public static int[] ausreichend(int[] noten){
-        int[] rez = new int[101];
+        int[] nichtAusreichende= new int[noten.length];
         int j = 0;
-        for(int i = 0; i< noten.length; i++)
+        for(int i : noten)
         {
-            if(noten[i] < 40)
+            if(i < 40)
             {
-                rez[j++] = noten[i];
+                nichtAusreichende[j] = i;
+                j += 1;
             }
         }
-        return rez;
+        int[] result = new int[j];
+        System.arraycopy(nichtAusreichende, 0, result, 0, j);
+
+        return result;
     }
 
     /*
@@ -34,7 +38,7 @@ public class Problem1 {
     Rückgabewert soll die Methode eine Array mit die abgerundete Note liefern.
      */
 
-    public static int roundedGrade(int note) {
+    public static int abgerundetenNote(int note) {
         if (note >= 38) {
             int rounded = (note / 5 + 1) * 5;
             if (rounded - note < 3) {
@@ -44,20 +48,17 @@ public class Problem1 {
         return note;
     }
 
-    public static int[] roundedGrades(int[] notenArr) {
+    public static int[] abgerundetenNoten(int[] notenArr) {
         int length = notenArr.length;
         int[] temp = new int[length];
 
         int cnt = 0;
-        for (int j : notenArr) {
-            int rounded = roundedGrade(j);
-            if (rounded != j) {
-                temp[cnt++] = rounded;
-            }
+        for (int i = 0; i < length; i++) {
+            temp[i] = abgerundetenNote(notenArr[i]);
         }
-        int[] arr = new int[cnt];
-        System.arraycopy(temp, 0, arr, 0, cnt);
-        return arr;
+
+        return temp;
+
     }
 
     public static int maximaleNoten(int noten[]){
@@ -67,7 +68,7 @@ public class Problem1 {
             if(noten[i] > rez)
                 rez = noten[i];
         }
-        return roundedGrade(rez);
+        return abgerundetenNote(rez);
     }
 
 

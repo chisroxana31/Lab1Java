@@ -21,12 +21,12 @@ public class Problem2 {
     }
 
     public static int minSumme(int noten[]){
-        int minValue = minim(noten);
+        int maxValue = maxim(noten);
         int summe = 0;
 
         for(int i = 0; i< noten.length; i++)
         {
-            if(noten[i] != minValue)
+            if(noten[i] != maxValue)
             {
                 summe += noten[i];
             }
@@ -35,12 +35,12 @@ public class Problem2 {
 
     }
     public static int maxSumme(int noten[]){
-        int maxValue = maxim(noten);
+        int minValue = minim(noten);
         int summe = 0;
 
         for(int i = 0; i< noten.length; i++)
         {
-            if(noten[i] != maxValue)
+            if(noten[i] != minValue)
             {
                 summe += noten[i];
             }

@@ -36,13 +36,17 @@ public class Problem4 {
         return teuerste;
     }
     public static int geldbetragMarkus(int budget, int[] tastaturen, int[] usbLaufwerke) {
-        int billigsteTastatur = billigsteTastatur(tastaturen);
-        int teuersteUSBLaufwerk = teuersteUSBLaufwerk(usbLaufwerke, budget);
+        int maxTotalCost = -1; // Set to -1 initially, indicating that it's not possible to buy both items.
 
-        if (billigsteTastatur == Integer.MAX_VALUE || teuersteUSBLaufwerk == -1) {
-            return -1;
+        for (int tastaturPreis : tastaturen) {
+            for (int usbPreis : usbLaufwerke) {
+                int totalCost = tastaturPreis + usbPreis;
+                if (totalCost <= budget && totalCost > maxTotalCost) {
+                    maxTotalCost = totalCost;
+                }
+            }
         }
 
-        return billigsteTastatur + teuersteUSBLaufwerk;
+        return maxTotalCost;
     }
 }

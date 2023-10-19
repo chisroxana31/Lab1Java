@@ -105,6 +105,51 @@ public class Main {
         assertArrayEquals(expected, Problem3.divisionDigit(largeNumber, divisor));
         System.out.println("Alle Tests für Problem 3 bestanden.");
     }
+
+    //Testen fur problem 4:
+
+    @Test
+    public void testBilligsteTastatur() {
+        int[] tastaturen = {40, 35, 70, 15, 45};
+        int expected = 15;
+        assertEquals(expected, Problem4.billigsteTastatur(tastaturen));
+    }
+
+    @Test
+    public void testTeuersteGegenstand() {
+        int[] tastaturen = {15, 20, 10, 35};
+        int[] usbLaufwerke = {20, 15, 40, 15};
+        int expected = 40;
+        assertEquals(expected, Problem4.teuersteGegenstand(tastaturen, usbLaufwerke));
+    }
+
+    @Test
+    public void testTeuersteUSBLaufwerk() {
+        int[] usbLaufwerke = {15, 45, 20};
+        int budget = 30;
+        int expected = 20;
+        assertEquals(expected, Problem4.teuersteUSBLaufwerk(usbLaufwerke, budget));
+    }
+
+    @Test
+    public void testGeldbetragMarkus() {
+        int budget = 60;
+        int[] tastaturen = {40, 50, 60};
+        int[] usbLaufwerke = {8, 12};
+        int expected = 58; // billigste Tastatur (60) + teuerstes USB-Laufwerk (8)
+        assertEquals(expected, Problem4.geldbetragMarkus(budget, tastaturen, usbLaufwerke));
+    }
+
+    @Test
+    public void testGeldbetragMarkus_NoPurchase() {
+        int budget = 30;
+        int[] tastaturen = {40, 50, 60};
+        int[] usbLaufwerke = {8, 12};
+        int expected = -1;
+        assertEquals(expected, Problem4.geldbetragMarkus(budget, tastaturen, usbLaufwerke));
+        System.out.println("Alle Tests für Problem 4 bestanden.");
+
+    }
 }
 
 
